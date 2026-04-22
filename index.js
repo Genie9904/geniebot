@@ -2,6 +2,7 @@ const { Client, GatewayIntentBits, EmbedBuilder, Partials } = require('discord.j
 const sqlite3 = require('sqlite3').verbose();
 const { open } = require('sqlite');
 const Parser = require('rss-parser');
+const http = require('http');
 require('dotenv').config();
 
 const client = new Client({
@@ -354,3 +355,12 @@ client.on('messageReactionRemove', async (reaction, user) => {
 });
 
 client.login(process.env.DISCORD_TOKEN);
+
+// Keep-Alive HTTP Server for Render.com
+const PORT = process.env.PORT || 3000;
+http.createServer((req, res) => {
+    res.write("🧞‍♂️ Genie Bot is Online and Awake!");
+    res.end();
+}).listen(PORT, () => {
+    console.log(`Keep-alive server listening on port ${PORT}`);
+});
