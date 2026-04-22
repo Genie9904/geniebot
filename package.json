@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "postinstall": "npm rebuild sqlite3 --build-from-source",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "20.x"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +21,6 @@
     "node-cron": "^4.2.1",
     "rss-parser": "^3.13.0",
     "sqlite": "^5.1.1",
-    "sqlite3": "^6.0.1"
+    "sqlite3": "5.1.7"
   }
 }
